@@ -28,9 +28,9 @@ freeform_questions = [
 
 # Images for Q1–Q3
 image_urls = {
-    "How are you feeling?": "/static/images/emojis.png",
-    "What’s the color of your emotion?": "/static/images/colors.png",
-    "What’s the shape of your emotion?": "/static/images/shapes.png"
+    "How are you feeling?": "/images/emojis.png",
+    "What’s the color of your emotion?": "/images/colors.png",
+    "What’s the shape of your emotion?": "/images/shapes.png"
 }
 
 @app.route('/')
