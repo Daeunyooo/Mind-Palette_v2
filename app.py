@@ -146,4 +146,4 @@ def final_book():
     return render_template('page4.html', story=final_story, drawing=final_drawing)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=8080)
