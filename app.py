@@ -28,9 +28,9 @@ freeform_questions = [
 
 # Images for Q1–Q3
 image_urls = {
-    "How are you feeling?": "/images/emojis.png",
-    "What’s the color of your emotion?": "/images/colors.png",
-    "What’s the shape of your emotion?": "/images/shapes.png"
+    "How are you feeling?": url_for('static', filename='images/emojis.png'),
+    "What’s the color of your emotion?": url_for('static', filename='images/colors.png'),
+    "What’s the shape of your emotion?": url_for('static', filename='images/shapes.png')
 }
 
 @app.route('/')
