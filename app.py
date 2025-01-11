@@ -26,12 +26,7 @@ freeform_questions = [
     {"validation": None, "question": "Based on your reflections, would you like to create a story?"}  # Q8
 ]
 
-# Images for Q1–Q3
-image_urls = {
-    "How are you feeling?": url_for('static', filename='images/emojis.png'),
-    "What’s the color of your emotion?": url_for('static', filename='images/colors.png'),
-    "What’s the shape of your emotion?": url_for('static', filename='images/shapes.png')
-}
+
 
 @app.route('/')
 def index():
@@ -40,6 +35,13 @@ def index():
 @app.route('/chat', methods=['POST'])
 def chat():
     global user_responses
+    # Images for Q1–Q3 initialized here
+    image_urls = {
+        "How are you feeling?": url_for('static', filename='images/emojis.png'),
+        "What’s the color of your emotion?": url_for('static', filename='images/colors.png'),
+        "What’s the shape of your emotion?": url_for('static', filename='images/shapes.png')
+    }
+
     user_input = request.json['message']
     conversation = request.json.get('conversation', [])
     next_question_index = len(conversation) // 2
