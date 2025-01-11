@@ -108,21 +108,17 @@ def generate_stories():
     stories = []
 
     for style, instruction in narrative_styles.items():
+        # Generate the narrative
         story_prompt = (
             f"Based on the following user responses: {user_summary}, {instruction} "
             "The story should be human-like and reflecting the user's experience. "
             "Keep the story encouraging and easy to read for 10 years old, address the reader as 'you,' and under 400 characters."
         )
-        try:
-            story_response = openai.Completion.create(
-                model="gpt-4",
-                prompt=story_prompt,
-                max_tokens=150,
-                timeout=30  # Set a timeout for the API call
-            )
-            story_text = story_response.choices[0].text.strip()
-        except Exception as e:
-            return jsonify({'error': 'Failed to generate story due to timeout or other API issue.', 'exception': str(e)}), 504
+        story_response = openai.ChatCompletion.create(
+            model="gpt-4",
+            messages=[{"role": "user", "content": story_prompt}]
+        )
+        story_text = story_response.choices[0].message["content"].strip()
 
         # Generate an illustration prompt tied to the narrative
         illustration_prompt = (
